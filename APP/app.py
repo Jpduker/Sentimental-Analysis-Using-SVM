@@ -8,17 +8,6 @@ import numpy as np
 import joblib
 
 # function to connect with the model
-pipeline = joblib.load(open("model/Emotion_classification_pipeline_17_dec_2021.pkl"))
-
-
-def predict_emotions(docx):
-    results = pipeline.predict([docx])
-    return results
-
-
-def Get_prediction_probability(docx):
-    results = pipeline.predict_proba([docx])
-    return results
 
 
 def main():
@@ -35,18 +24,16 @@ def main():
             col1, col2 = st.columns(2)
 
             # applying the functions
-            prediction = predict_emotions(raw_text)
-            probability = Get_prediction_probability(raw_text)
 
             with col1:
                 st.success("Original Text")
                 st.write(raw_text)
 
                 st.success("Prediction")
-                st.write(prediction)
+
             with col2:
                 st.success("Prediction Probability")
-                st.write(probability)
+
     elif choice == "Monitor":
         st.subheader("Monitor-App")
 
